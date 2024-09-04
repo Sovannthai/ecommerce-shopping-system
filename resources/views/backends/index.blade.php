@@ -28,7 +28,7 @@
         padding: 1rem;
     }
 </style>
-@if (auth()->user()->can('view dashborad'))
+{{-- @if (auth()->user()->can('view dashborad')) --}}
     <div class="row">
         <div class="col-sm-6 col-md-3">
             <div class="card card-stats card-round">
@@ -123,7 +123,7 @@
             </div>
         </div>
     </div>
-@endif
+{{-- @endif --}}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     var barChart = document.getElementById('barChart').getContext('2d');

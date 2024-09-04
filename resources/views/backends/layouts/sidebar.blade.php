@@ -29,7 +29,7 @@
                         <p>@lang('Home')</p>
                     </a>
                 </li>
-                @if (auth()->user()->can('view user'))
+                {{-- @if (auth()->user()->can('view user')) --}}
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#forms"
                         @if (Route::is('roles.*') || Route::is('permission.*')) aria-expanded="true" @else aria-expanded="false" @endif>
@@ -44,45 +44,45 @@
                                     <span class="sub-item">@lang('Users')</span>
                                 </a>
                             </li>
-                            @if (auth()->user()->can('view role'))
+                            {{-- @if (auth()->user()->can('view role')) --}}
                             <li class="@if (Route::is('roles.*')) active @endif">
                                 <a href="{{ route('roles.index') }}">
                                     <span class="sub-item">@lang('Roles')</span>
                                 </a>
                             </li>
-                            @endif
-                            @if (auth()->user()->roles->first()->name == 'Admin')
+                            {{-- @endif --}}
+                            {{-- @if (auth()->user()->roles->first()->name == 'Admin') --}}
                             <li class="@if (Route::is('permission.*')) active @endif">
                                 <a href="{{ route('permission.index') }}">
                                     <span class="sub-item">@lang('Permissions')</span>
                                 </a>
                             </li>
-                            @endif
+                            {{-- @endif --}}
                         </ul>
                     </div>
                 </li>
-                @endif
+                {{-- @endif --}}
                 <li class="nav-item">
-                    <a href="#">
+                    <a href="{{ route('customers.index') }}">
                         <i class="fa fas fa-address-book"></i>
                         <p>@lang('Customer')</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#product">
+                    <a data-bs-toggle="collapse" href="#product" @if (Route::is('categories.*')) aria-expanded="true" @else aria-expanded="false" @endif>
                         <i class="fa fas fa-cubes"></i>
                         <p>@lang('Product')</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="product">
+                    <div class="collapse @if (Route::is('categories.*')) show @endif" id="product">
                         <ul class="nav nav-collapse">
                             <li>
                                 <a href="#">
                                     <span class="sub-item">@lang('List Product')</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#">
+                            <li class="@if (Route::is('categories.*'))) active @endif">
+                                <a href="{{ route('categories.index') }}">
                                     <span class="sub-item">@lang('Category')</span>
                                 </a>
                             </li>
@@ -111,7 +111,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="#">
+                    <a href="{{ route('sliders.index') }}">
                         <i class="fas fa-image"></i>
                         <p>@lang('Slider')</p>
                     </a>
@@ -124,7 +124,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="#">
-                        <i class="fas fa-percent"></i>
+                        <i class="fas fa-star"></i>
                         <p>@lang('Rating & Review')</p>
                     </a>
                 </li>

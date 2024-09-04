@@ -10,10 +10,11 @@
         </div>
         <div class="card-body">
             <table id="basic-datatables" class="table table-bordered text-nowrap table-hover table-responsive-lg">
-                <thead class="table-secondary">
+                <thead class="table-dark">
                     <tr>
                         <th>@lang('Profile')</th>
                         <th>@lang('Name')</th>
+                        <th>@lang('Username')</th>
                         <th>@lang('Role')</th>
                         <th>@lang('Email')</th>
                         <th>@lang('Action')</th>
@@ -24,16 +25,18 @@
                         <tr>
                             <td>
                                 <span>
-                                    <a class="example-image-link" href="{{ asset('uploads/all_photo/' . $user->image) }}"
-                                        data-lightbox="lightbox-' . $user->id . '">
+                                    <a class="example-image-link"
+                                        href="{{ $user->image ? asset('uploads/all_photo/' . $user->image) : $user->avatar }}"
+                                        data-lightbox="lightbox-{{ $user->id }}">
                                         <img class="example-image image-thumbnail"
-                                            src="{{ asset('uploads/all_photo/'.$user->image) }}" alt="profile"
-                                            width="50px" height="50px" style="cursor:pointer" />
+                                            src="{{ $user->image ? asset('uploads/all_photo/' . $user->image) : $user->avatar }}"
+                                            alt="profile" width="50px" height="50px" style="cursor:pointer" />
                                     </a>
                                 </span>
                             </td>
                             <td>{{ $user->name }}</td>
-                            <td>{{ $user->roles->first()->name }}</td>
+                            <td>{{ $user->username }}</td>
+                            <td>{{ @$user->roles->first()->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>
                                 @if (auth()->user()->can('update user'))
@@ -42,7 +45,7 @@
                                         title="@lang('Edit')"><i class="fa fa-edit ambitious-padding-btn">
                                             @lang('Edit')</i></a>&nbsp;&nbsp;
                                 @endif
-                                @if ($user->roles->first()->name != 'Admin')
+                                @if (@$user->roles->first()->name != 'Admin')
                                     @if (auth()->user()->can('delete user'))
                                         <form id="deleteForm" action="{{ route('users.destroy', ['user' => $user->id]) }}"
                                             method="POST" class=" d-inline-block">

@@ -3,6 +3,11 @@
         Options -MultiViews -Indexes
     </IfModule>
 
+    # Add Content Security Policy Header
+    <IfModule mod_headers.c>
+        Header set Content-Security-Policy "frame-ancestors 'self' https://oauth.telegram.org http://shopping-backend.test;"
+    </IfModule>
+
     RewriteEngine On
 
     # Handle Authorization Header

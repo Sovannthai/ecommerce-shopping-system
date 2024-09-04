@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -37,4 +40,15 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
         $this->middleware('auth')->only('logout');
     }
+    public function redirectToTelegram()
+    {
+        return Socialite::driver('telegram')->redirect();
+    }
+
+    public function handleTelegramCallback()
+    {
+        $user = Socialite::driver('telegram')->user();
+        return redirect()->intended('/');
+    }
+
 }

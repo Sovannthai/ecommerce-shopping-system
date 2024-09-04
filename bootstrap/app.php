@@ -15,6 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->use([
             // \App\Http\Middleware\Localization::class,
             // \App\Http\Middleware\SetLocale::class
+            'csp' => \App\Http\Middleware\ContentSecurityPolicyMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

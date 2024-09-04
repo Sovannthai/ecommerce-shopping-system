@@ -1,6 +1,6 @@
 <div class="main-header-logo">
     <!-- Logo Header -->
-    <div class="logo-header" data-background-color="orange">
+    <div class="logo-header" data-background-color="light-blue2">
         <a href="{{ route('home') }}" class="logo">
             <img src="{{ asset('backends/assets/img/kaiadmin/logo_light.svg') }}" alt="navbar brand" class="navbar-brand"
                 height="20" />
@@ -20,7 +20,7 @@
     <!-- End Logo Header -->
 </div>
 <!-- Navbar Header -->
-<nav class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom" data-background-color="orange">
+<nav class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom" data-background-color="light-blue2">
     <div class="container-fluid">
         {{-- <nav
             class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex">
@@ -272,7 +272,7 @@
                 <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="#"
                     aria-expanded="false">
                     <div class="avatar-sm">
-                        <img src="{{ asset('uploads/all_photo/'.auth()->user()->image) }}" alt="..."
+                        <img src="{{ auth()->user()->image ? asset('uploads/all_photo/' . auth()->user()->image) : auth()->user()->avatar }}" alt="..."
                             class="avatar-img rounded-circle" />
                     </div>
                     <span class="profile-username">
@@ -285,7 +285,7 @@
                         <li>
                             <div class="user-box">
                                 <div class="avatar-lg">
-                                    <img src="{{ asset('uploads/all_photo/'.auth()->user()->image) }}" alt="image profile"
+                                    <img src="{{ auth()->user()->image ? asset('uploads/all_photo/' . auth()->user()->image) : auth()->user()->avatar }}" alt="image profile"
                                         class="avatar-img rounded" />
                                 </div>
                                 <div class="u-text">
