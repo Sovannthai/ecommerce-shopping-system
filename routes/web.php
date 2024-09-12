@@ -11,6 +11,7 @@ use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\Auth\TelegramController;
 use App\Http\Controllers\Backends\RoleController;
 use App\Http\Controllers\Backends\UserController;
+use App\Http\Controllers\Backends\GoogleController;
 use App\Http\Controllers\Backends\CustomerController;
 use App\Http\Controllers\Backends\PermissionController;
 
@@ -31,6 +32,11 @@ Route::post('/Shopping-Backend/telegram/webhook', [TelegramController::class, 'w
 // routes/web.php
 Route::post('/api/telegram-login', [TelegramController::class, 'telegramLogin'])->name('store_user.telegram');
 Route::get('/telegram_callback', [TelegramController::class, 'telegramAuthCallback'])->name('telegram_callback');
+//Google Login
+Route::controller(GoogleController::class)->group(function(){
+    Route::get('auth/google', 'redirectToGoogle')->name('auth.google');
+    Route::get('auth/google/callback', 'handleGoogleCallback');
+});
 
 Route::middleware(['auth', Localization::class, SetLocale::class,])->group(function () {
     Route::resource('roles', RoleController::class);

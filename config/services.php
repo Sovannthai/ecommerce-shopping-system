@@ -42,6 +42,11 @@ return [
     'telegram-bot-api' => [
         'token' => env('TELEGRAM_BOT_TOKEN', '6892001713:AAEFqGqO4bqaQmNx465sQxV-Z6Cq-HHQCsw'),
     ],
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => env('GOOGLE_REDIRECT'),
+    ],
     'csp' => [
         'frame-ancestors' => [
             'self',
