@@ -7,7 +7,6 @@ use Exception;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Services\ImageService;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 
 class CustomerController extends Controller

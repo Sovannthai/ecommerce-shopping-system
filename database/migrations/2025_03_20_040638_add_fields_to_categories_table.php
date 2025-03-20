@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('categories', function (Blueprint $table) {
-            $table->foreignId('parent_id')->nullable()->after('slug')->constrained('categories')->onDelete('set null');
             $table->string('image')->nullable()->after('description');
             $table->enum('status', ['active', 'inactive'])->default('active')->after('image');
         });

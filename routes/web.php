@@ -12,7 +12,7 @@ use App\Http\Controllers\Auth\TelegramController;
 use App\Http\Controllers\Backends\RoleController;
 use App\Http\Controllers\Backends\UserController;
 use App\Http\Controllers\Backends\GoogleController;
-use App\Http\Controllers\Backends\CategoryController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Backends\CustomerController;
 use App\Http\Controllers\Backends\PermissionController;
 use App\Http\Controllers\Backends\ReviewController;
@@ -48,7 +48,6 @@ Route::middleware(['auth', Localization::class, SetLocale::class,])->group(funct
     Route::get('/user-profile/{id}', [UserController::class, 'view_profile'])->name('user.view_profile');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('categories', CategoryController::class);
-    Route::get('/categories-tree', [CategoryController::class, 'tree'])->name('categories.tree');
     Route::resource('sliders', SliderController::class);
     Route::resource('customers', CustomerController::class);
     Route::resource('reviews', ReviewController::class);

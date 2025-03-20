@@ -24,20 +24,10 @@ class CategoryController extends Controller
                 $query->where('name', 'like', '%'.$request->search.'%');
             }
 
-            if ($request->has('parent_id')) {
-                $query->where('parent_id', $request->parent_id);
-            } else {
-                // By default, fetch only parent categories
-                $query->whereNull('parent_id');
-            }
-
             if ($request->has('status')) {
                 $query->where('status', $request->status);
             }
 
-            if ($request->has('include_children') && $request->include_children) {
-                $query->with('children');
-            }
 
             // Sorting
             $sortBy = $request->get('sort_by', 'created_at');
