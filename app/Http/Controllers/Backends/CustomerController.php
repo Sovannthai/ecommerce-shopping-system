@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Backends;
 
+use App\Http\Controllers\Controller;
 use Exception;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Services\ImageService;
-use App\Http\Controllers\Controller;
+
 
 class CustomerController extends Controller
 {

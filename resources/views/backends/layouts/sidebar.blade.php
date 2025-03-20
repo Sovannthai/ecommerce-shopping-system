@@ -69,42 +69,52 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#product" @if (Route::is('categories.*')) aria-expanded="true" @else aria-expanded="false" @endif>
+                    <a data-bs-toggle="collapse" href="#product" @if (Route::is('categories.*') || Route::is('brands.*') || Route::is('products.*') || Route::is('reviews.*')) aria-expanded="true" @else aria-expanded="false" @endif>
                         <i class="fa fas fa-cubes"></i>
                         <p>@lang('Product')</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse @if (Route::is('categories.*')) show @endif" id="product">
+                    <div class="collapse @if (Route::is('categories.*') || Route::is('brands.*') || Route::is('products.*') || Route::is('reviews.*')) show @endif" id="product">
                         <ul class="nav nav-collapse">
-                            <li>
-                                <a href="#">
-                                    <span class="sub-item">@lang('List Product')</span>
+                            <li class="@if (Route::is('products.*')) active @endif">
+                                <a href="{{ route('products.index') }}">
+                                    <span class="sub-item">@lang('Products')</span>
                                 </a>
                             </li>
-                            <li class="@if (Route::is('categories.*'))) active @endif">
+                            <li class="@if (Route::is('categories.*')) active @endif">
                                 <a href="{{ route('categories.index') }}">
-                                    <span class="sub-item">@lang('Category')</span>
+                                    <span class="sub-item">@lang('Categories')</span>
+                                </a>
+                            </li>
+                            <li class="@if (Route::is('brands.*')) active @endif">
+                                <a href="{{ route('brands.index') }}">
+                                    <span class="sub-item">@lang('Brands')</span>
+                                </a>
+                            </li>
+                            <li class="@if (Route::is('reviews.*')) active @endif">
+                                <a href="{{ route('reviews.index') }}">
+                                    <span class="sub-item">@lang('Reviews')</span>
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#orders">
+                    <a data-bs-toggle="collapse" href="#orders" @if (Route::is('orders.*')) aria-expanded="true" @else aria-expanded="false" @endif>
                         <i class="fas fa-shopping-bag"></i>
                         <p>@lang('Orders')</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="orders">
+                    <div class="collapse @if (Route::is('orders.*')) show @endif" id="orders">
                         <ul class="nav nav-collapse">
-                            <li>
-                                <a href="#">
-                                    <span class="sub-item">@lang('List Order')</span>
+                            <li class="@if (Route::is('orders.dashboard')) active @endif">
+                                <a href="{{ route('orders.dashboard') }}">
+                                    <span class="sub-item">@lang('Dashboard')</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#">
-                                    <span class="sub-item">@lang('Cancel Order')</span>
+                            <li class="@if (Route::is('orders.index')) active @endif">
+                                <a href="{{ route('orders.index') }}">
+                                    <span class="sub-item">@lang('All Orders')</span>
                                 </a>
                             </li>
                         </ul>
@@ -120,12 +130,6 @@
                     <a href="#">
                         <i class="fas fa-percent"></i>
                         <p>@lang('Promotion')</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#">
-                        <i class="fas fa-star"></i>
-                        <p>@lang('Rating & Review')</p>
                     </a>
                 </li>
                 <li class="nav-item">

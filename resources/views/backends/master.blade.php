@@ -63,6 +63,7 @@
         <!-- End Custom template -->
     </div>
     <!--   Core JS Files   -->
+    @stack('scripts')
     @include('backends.layouts.script')
     <script>
         $(document).ready(function() {
