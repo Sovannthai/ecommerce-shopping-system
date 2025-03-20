@@ -9,7 +9,8 @@
                 @include('backends.components.form.categories_form',
                 [
                     'route_edit' => 'categories.update',
-                    'row' => $category,
+                    'row'        => $category,
+                    'category'   => $category,
                 ])
             </div>
         </div>

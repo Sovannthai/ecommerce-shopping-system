@@ -1,4 +1,4 @@
-<div class="modal fade {{ $modal_name }}" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+<div class="modal fade {{ $modal_name }}" id="dropify_modal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
 </div>
 <script>
     function generateSlug() {

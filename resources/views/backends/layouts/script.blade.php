@@ -108,13 +108,16 @@
     $(document).ready(function() {
         $('.dropify').dropify();
     });
+    // Reinitialize Dropify when modal opens
+    $('#dropify_modal').on('shown.bs.modal', function() {
+        $('.dropify').dropify();
+    });
 </script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         lightbox.option({
-        'resizeDuration': 200,
+            'resizeDuration': 200,
             'wrapAround': true
         });
     });
 </script>
-
