@@ -16,12 +16,26 @@ class CategoryController extends Controller
         return view('backends.categories.index', compact('categories'));
     }
     /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('backends.categories.create');
+    }
+    /**
      * Store a newly created resource in storage.
      */
     public function store(StoreCategoryRequest $request)
     {
         Category::create($request->validated());
         return redirect()->route('categories.index')->with('success', 'Category created successfully');
+    }
+    /**
+     * Edit the specified resource.
+     */
+    public function edit(Category $category)
+    {
+        return view('backends.categories.edit', compact('category'));
     }
     /**
      * Update the specified resource in storage.

@@ -101,6 +101,13 @@
                                 <input type="text" class="form-control" id="phone" name="phone"
                                     value="{{ old('phone') }}">
                             </div>
+
+                            <div class="col-sm-4">
+                                <label for="password" class="col-form-label">Password</label>
+                                <input type="text" class="form-control" id="password" name="password"
+                                    value="{{ old('password') }}">
+                            </div>
+
                             <div class="col-sm-4">
                                 <label for="dob" class="col-form-label">Date of Birth</label>
                                 <input type="date" class="form-control" id="dob" name="dob"

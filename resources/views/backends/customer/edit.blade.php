@@ -40,6 +40,12 @@
                             <input type="text" class="form-control" id="phone" name="phone"
                                 value="{{ $customer->phone }}">
                         </div>
+
+                        <div class="col-sm-4">
+                            <label for="password" class="col-form-label">password</label>
+                            <input type="text" class="form-control" id="password" name="password">
+                        </div>
+
                         <div class="col-sm-4">
                             <label for="dob-{{ $customer->id }}" class="col-form-label">Date of Birth</label>
                             <input type="date" class="form-control" id="dob-{{ $customer->id }}" name="dob"
