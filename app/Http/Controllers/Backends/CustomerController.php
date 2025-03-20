@@ -7,7 +7,8 @@ use Exception;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Services\ImageService;
-
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class CustomerController extends Controller
 {
@@ -31,7 +32,11 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         try {
-            $customer = Customer::create($request->except('image'));
+            $customer = Customer::create($request->except('image','password'));
+            if($request->has('password')){
+                $customer->password = Hash::make($request->password);
+                $customer->save();
+            }
             if ($request->hasFile('image')) {
                 if ($customer->image) {
                     $this->imageService->deleteImage($customer->image);
@@ -61,7 +66,11 @@ class CustomerController extends Controller
     {
         try {
             $customer = Customer::findOrFail($id);
-            $customer->fill($request->except('image'));
+            $customer->fill($request->except('image','password'));
+            if($request->has('password')){
+                $customer->password = Hash::make($request->password);
+                $customer->save();
+            }
             if ($request->hasFile('image')) {
                 if ($customer->image) {
                     $this->imageService->deleteImage($customer->image);

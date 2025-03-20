@@ -1,6 +1,7 @@
 <script src="{{ asset('backends/assets/js/core/jquery-3.7.1.min.js') }}"></script>
 <script src="{{ asset('backends/assets/js/core/popper.min.js') }}"></script>
 <script src="{{ asset('backends/assets/js/core/bootstrap.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
 
 <!-- jQuery Scrollbar -->
 <script src="{{ asset('backends/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
@@ -107,13 +108,16 @@
     $(document).ready(function() {
         $('.dropify').dropify();
     });
+    // Reinitialize Dropify when modal opens
+    $('#dropify_modal').on('shown.bs.modal', function() {
+        $('.dropify').dropify();
+    });
 </script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         lightbox.option({
-        'resizeDuration': 200,
+            'resizeDuration': 200,
             'wrapAround': true
         });
     });
 </script>
-

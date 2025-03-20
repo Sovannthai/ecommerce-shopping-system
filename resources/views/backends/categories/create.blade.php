@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="createCategoryLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -53,6 +54,19 @@
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                 </form>
+=======
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Create Category</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="form">
+                @include('backends.components.form.categories_form', [
+                    'route_create' => 'categories.store',
+                ])
+>>>>>>> b69fd8da63ea07ed513091a0e36e905ea464462d
             </div>
         </div>
     </div>

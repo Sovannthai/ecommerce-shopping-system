@@ -2,19 +2,34 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Customer extends Model
 {
-    use HasFactory;
+    use HasFactory, HasApiTokens;
     protected $guarded = [];
     protected $casts = [
         'date' => 'datetime',
     ];
 
-    public function getFormattedCreatedAtAttribute()
+    protected $appends = ['image_url'];
+
+    protected function generateImageUrl($imageName)
     {
-        return $this->created_at->format('Y-m-d H:i:s');
+        if (!empty($imageName)) {
+            return asset('uploads/all_photo/' . rawurlencode($imageName));
+        } else {
+            return null;
+        }
     }
+
+    public function getImageUrlAttribute()
+    {
+        return $this->generateImageUrl($this->image);
+    }
+
+
+
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Helpers\Routes\RouteHelper;
+use App\Http\Controllers\Api\ApiController;
 use Illuminate\Support\Facades\Route;
 
 // API Products Routes
@@ -26,10 +27,7 @@ Route::prefix('cart')->group(function () {
     Route::post('/clear', [App\Http\Controllers\Api\CartController::class, 'clearCart']);
     Route::post('/transfer', [App\Http\Controllers\Api\CartController::class, 'transferCart']);
 });
-
-// API Order Routes
-Route::apiResource('orders', App\Http\Controllers\Api\OrderController::class)->except(['update', 'destroy']);
-Route::post('orders/{id}/cancel', [App\Http\Controllers\Api\OrderController::class, 'cancel']);
-Route::post('orders/{id}/status', [App\Http\Controllers\Api\OrderController::class, 'updateStatus']);
-Route::get('orders/statistics', [App\Http\Controllers\Api\OrderController::class, 'statistics']);
-
+Route::post('/customer/login', [ApiController::class, 'login']);
+Route::post('/customer/register', [ApiController::class, 'register']);
+Route::get('/get-all-customers', [ApiController::class, 'getAllCustomers']);
+Route::get('/get-customer-detail', [ApiController::class, 'getCustomerDetail']);

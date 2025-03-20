@@ -4,9 +4,9 @@
     <div class="card">
         <div class="card-header text-uppercase">
             @lang('Users')
-            @if (auth()->user()->can('create user'))
+            {{-- @if (auth()->user()->can('create user')) --}}
                 <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm float-right">+ @lang('Add')</a>
-            @endif
+            {{-- @endif --}}
         </div>
         <div class="card-body">
             <table id="basic-datatables" class="table table-bordered text-nowrap table-hover table-responsive-lg">
@@ -39,14 +39,14 @@
                             <td>{{ @$user->roles->first()->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>
-                                @if (auth()->user()->can('update user'))
+                                {{-- @if (auth()->user()->can('update user')) --}}
                                     <a href="{{ route('users.edit', ['user' => $user->id]) }}"
                                         class="btn btn-outline-primary btn-sm text-uppercase" data-toggle="tooltip"
                                         title="@lang('Edit')"><i class="fa fa-edit ambitious-padding-btn">
                                             @lang('Edit')</i></a>&nbsp;&nbsp;
-                                @endif
-                                @if (@$user->roles->first()->name != 'Admin')
-                                    @if (auth()->user()->can('delete user'))
+                                {{-- @endif --}}
+                                {{-- @if (@$user->roles->first()->name != 'Admin') --}}
+                                    {{-- @if (auth()->user()->can('delete user')) --}}
                                         <form id="deleteForm" action="{{ route('users.destroy', ['user' => $user->id]) }}"
                                             method="POST" class=" d-inline-block">
                                             @csrf
@@ -57,8 +57,8 @@
                                                 <i class="fa fa-trash ambitious-padding-btn"> @lang('Delete')</i>
                                             </button>
                                         </form>
-                                    @endif
-                                @endif
+                                    {{-- @endif
+                                @endif --}}
                             </td>
                         </tr>
                     @endforeach
